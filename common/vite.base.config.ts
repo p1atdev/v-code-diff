@@ -14,11 +14,11 @@ export const defaultPlugins = [
 // https://vitejs.dev/config/
 export const baseBuildConfig = defineConfig({
   build: {
-    outDir: path.resolve(__dirname, `./dist/${isVue2 ? 'v2' : 'v3'}`),
+    outDir: path.resolve(__dirname, `../dist/${isVue2 ? 'v2' : 'v3'}`),
     emptyOutDir: false,
     target: 'es2018',
     lib: {
-      entry: path.resolve(__dirname, umd ? 'src/global.ts' : 'src/index.ts'),
+      entry: path.resolve(__dirname, umd ? '../src/global.ts' : '../src/index.ts'),
       formats: umd ? ['umd'] : ['es', 'cjs'],
       name: 'CodeDiff',
       fileName: format => `${outputName}.${format}.js`,

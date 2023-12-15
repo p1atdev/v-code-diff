@@ -36,8 +36,7 @@
     "dev:demo": "vue-demi-switch 3 vue3 && pnpm --filter demo dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --ext .vue,.js,.jsx,.ts,.tsx,json --fix --ignore-path .gitignore",
-    "postinstall": "node scripts/postinstall.js",
-    "prepublishOnly": "npm run build",
+    "postinstall": "node scripts/postinstall.cjs",
     "release": "bumpp --commit --no-push --tag && npm publish"
   },
   "peerDependencies": {

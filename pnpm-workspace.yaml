@@ -3,3 +3,4 @@ packages:
   - vue3-playground
   - vue2.7-playground
   - demo
+  - common

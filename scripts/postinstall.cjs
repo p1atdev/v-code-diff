@@ -1,6 +1,5 @@
-// eslint-disable-next-line unicorn/prefer-node-protocol
 const fs = require('fs')
-const { switchVersion, loadModule } = require('./utils')
+const { switchVersion, loadModule } = require('./utils.cjs')
 
 const Vue = loadModule('vue')
 

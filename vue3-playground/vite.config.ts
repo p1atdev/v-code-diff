@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import vue3 from '@vitejs/plugin-vue'
-import { baseBuildConfig, defaultPlugins } from '../vite.base.config'
+import { baseBuildConfig, defaultPlugins } from '../common/vite.base.config'
 
 export const viteVue3Config = defineConfig({
   plugins: [vue3(), ...defaultPlugins],

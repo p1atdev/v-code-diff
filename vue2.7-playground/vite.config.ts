@@ -2,7 +2,7 @@ import { resolve } from 'node:path'
 import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
 import vue2 from '@vitejs/plugin-vue2'
-import { baseBuildConfig, defaultPlugins } from '../vite.base.config'
+import { baseBuildConfig, defaultPlugins } from '../common/vite.base.config'
 
 export const viteVue2Config = defineConfig({
   plugins: [vue2(), ...defaultPlugins],
