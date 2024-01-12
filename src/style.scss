@@ -42,6 +42,7 @@
           color: var(--color-diffstat-addition-bg);
         }
         .diff-stat-deleted {
+          margin-left: 8px;
           color: var(--color-danger-emphasis);
         }
       }

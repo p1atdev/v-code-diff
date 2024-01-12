@@ -95,10 +95,9 @@ watch(() => props, () => {
           <div class="info-left">{{ newFilename }}</div>
         </span>
         <span v-if="!hideStat" class="diff-stat">
-          <slot name="stat">
+          <slot name="stat" :stat="diffChange.stat">
             <span class="diff-stat-added">+{{ diffChange.stat.additionsNum }} additions</span>
-            <span class="diff-stat-deleted" style="margin-left: 8px;">-{{ diffChange.stat.deletionsNum }}
-              deletions</span>
+            <span class="diff-stat-deleted">-{{ diffChange.stat.deletionsNum }} deletions</span>
           </slot>
         </span>
       </div>
@@ -108,10 +107,9 @@ watch(() => props, () => {
         <span class="info-right">
           <span style="margin-left: 20px;">{{ newFilename }}</span>
           <span v-if="!hideStat" class="diff-stat">
-            <slot name="stat">
+            <slot name="stat" :stat="diffChange.stat">
               <span class="diff-stat-added">+{{ diffChange.stat.additionsNum }} additions</span>
-              <span class="diff-stat-deleted" style="margin-left: 8px;">-{{ diffChange.stat.deletionsNum }}
-                deletions</span>
+              <span class="diff-stat-deleted">-{{ diffChange.stat.deletionsNum }} deletions</span>
             </slot>
           </span>
         </span>
