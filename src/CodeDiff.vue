@@ -21,6 +21,8 @@ interface Props {
   hideHeader?: boolean
   hideStat?: boolean
   theme?: 'light' | 'dark'
+  // Give a pattern to ignore matching lines eg: '(time|token)'
+  ignoreMatchingLines?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -36,6 +38,7 @@ const props = withDefaults(defineProps<Props>(), {
   hideHeader: false,
   hideStat: false,
   theme: 'light',
+  ignoreMatchingLines: undefined,
 })
 
 const emits = defineEmits<{
@@ -67,8 +70,8 @@ const newString = computed(() => {
 
 const raw = computed(() =>
   isUnifiedViewer.value
-    ? createUnifiedDiff(oldString.value, newString.value, props.language, props.diffStyle, props.context)
-    : createSplitDiff(oldString.value, newString.value, props.language, props.diffStyle, props.context),
+    ? createUnifiedDiff(oldString.value, newString.value, props.language, props.diffStyle, props.context, props.ignoreMatchingLines)
+    : createSplitDiff(oldString.value, newString.value, props.language, props.diffStyle, props.context, props.ignoreMatchingLines),
 )
 const diffChange = ref(raw.value)
 const isNotChanged = computed(() => diffChange.value.stat.additionsNum === 0 && diffChange.value.stat.deletionsNum === 0)

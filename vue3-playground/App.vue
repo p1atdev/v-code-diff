@@ -8,13 +8,14 @@ import { reactive } from 'vue'
 const form = reactive({
   // oldString: oldLongText,
   // newString: newLongText,
-  oldString: '123\n123\n123\n456\n123\n123\n123\n123\n123\n123\n123\n',
-  newString: '123\n123\n123\n123\n123\n123\n123\n123\n123\n123\n123\n',
+  oldString: '{\n  "code": "200",\n  "msg": "请求成功",\n  "data": {\n    "hitokoto": "往者不可谏，来者犹可追。",\n    "from": "论语·微子篇"\n  },\n  "time": "2024-01-12 17:27:03"\n}',
+  newString: '{\n  "code": "200",\n  "msg": "请求成功",\n  "data": {\n    "hitokoto": "成熟的人眼里满是前途，稚嫩的人眼里满是爱恨情仇。",\n    "from": "网易云热评"\n  },\n  "time": "2024-01-12 17:27:06"\n}',
   filename: 'oldFile',
   newFilename: 'newFile',
-  language: 'plaintext',
+  language: 'json',
   diffStyle: 'word',
-  outputFormat: 'line-by-line',
+  outputFormat: 'side-by-side',
+  ignoreMatchingLines: 'time',
   context: 3,
 })
 </script>
@@ -34,6 +35,7 @@ const form = reactive({
     :new-filename="form.newFilename"
     :language="form.language"
     :output-format="form.outputFormat"
+    :ignore-matching-lines="form.ignoreMatchingLines"
     :diff-style="form.diffStyle"
     :context="form.context"
   />

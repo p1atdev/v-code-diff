@@ -123,13 +123,22 @@ Not recommended, but the relevant capabilities are retained to facilitate migrat
 | maxHeight      | Maximum height of component, for example: 300px                                                                                                                         | string    | -                          | undefined     |
 | filename       | Filename                                                                                                                                                                | string    | -                          | undefined     |
 | newFilename    | New filename                                                                                                                                                            | string    | -                          | undefined     |
+| hideHeader | Hide header bar | boolean | - | false |
+| hideStat | Hide statistical part in the header bar | boolean | - | false |
 | theme          | Add dark mode                                                                                                                                                           | ThemeType | light , dark               | light       |
+| ignoreMatchingLines | Give a pattern to ignore matching lines eg: '(time\|token)' | string | - | undefined |
 
 ## Events
 
 | Name | Description                 | Type                                                                            |
 | ---- | --------------------------- | ------------------------------------------------------------------------------- |
 | diff | triggers when diff finished | (result: {stat: { isChanged: boolean, addNum: number, delNum: number}}) => void |
+
+## Slot
+
+| Name | Description                                                 |
+| ---- | ----------------------------------------------------------- |
+| stat | Custom statistical content, The scope parameter is { stat } |
 
 ## Extend languages
 

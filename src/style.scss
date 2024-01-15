@@ -29,21 +29,26 @@
       height: 24px;
 
       .info-left {
-        font-size: 13px;
         color: var(--color-fg-default);
       }
       .info-right {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 50%;
       }
       .diff-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         .diff-stat-added {
           color: var(--color-diffstat-addition-bg);
         }
         .diff-stat-deleted {
-          margin-left: 8px;
           color: var(--color-danger-emphasis);
+        }
+        .diff-stat-ignored {
+          color: var(--color-fg-subtle);
         }
       }
     }

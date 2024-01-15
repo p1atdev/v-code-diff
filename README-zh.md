@@ -121,13 +121,22 @@ Vue.use(CodeDiff)
 | maxHeight      | 组件最大高度，例如 300px                                                                                                                | string    | -                          | undefined    |
 | filename       | 文件名                                                                                                                                  | string    | -                          | undefined    |
 | newFilename    | 新文件文件名                                                                                                                   | string    | -                          | undefined    |
+| hideHeader | 隐藏头部栏 | boolean | - | false |
+| hideStat | 隐藏头部栏中的统计信息 | boolean | - | false |
 | theme          | 用于切换日间模式/夜间模式                                                                                                               | ThemeType | light , dark               | light      |
+| ignoreMatchingLines | 给出一个模式来忽略匹配行，例如：'(time\|token)' | string | - |  |
 
 ## 组件事件
 
 | Name | Description     | Type                                                                            |
 | ---- | --------------- | ------------------------------------------------------------------------------- |
 | diff | diff 完成后触发 | (result: {stat: { isChanged: boolean, addNum: number, delNum: number}}) => void |
+
+## 组件插槽
+
+| Name | Description                     |
+| ---- | ------------------------------- |
+| stat | 自定义统计内容，参数为 { stat } |
 
 ## 拓展高亮语言
 

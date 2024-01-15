@@ -42,6 +42,8 @@ export interface UnifiedLineChange {
 export interface DiffStat {
   additionsNum: number
   deletionsNum: number
+  ignoreAdditionsNum: number
+  ignoreDeletionsNum: number
 }
 
 export interface SplitViewerChange {
