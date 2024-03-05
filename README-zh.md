@@ -58,6 +58,24 @@ pnpm add @vue/composition-api
 
 ### Vue3
 
+#### 单独引入
+> 推荐使用，因为对 tree-shaking 有更好的支持。
+```vue
+<script setup>
+import { CodeDiff } from 'v-code-diff'
+</script>
+
+<template>
+  <div>
+    <CodeDiff
+      old-string="12345"
+      new-string="3456"
+      output-format="side-by-side"
+    />
+  </div>
+</template>
+```
+
 #### 注册为全局组件
 
 ```ts
@@ -79,24 +97,37 @@ app.use(CodeDiff).mount('#app')
 </template>
 ```
 
-#### 单独引入
-
-不推荐，但保留相关能力，方便 0.x 用户迁移
-
 ### Vue2
 
-#### 注册为全局组件
+#### 单独引入
+> 推荐使用，因为对 tree-shaking 有更好的支持。
+```vue
+<script>
+import { CodeDiff } from 'v-code-diff'
+export default {
+  components: {
+    CodeDiff
+  }
+}
+</script>
 
+<template>
+  <div>
+    <CodeDiff
+      old-string="12345"
+      new-string="3456"
+      output-format="side-by-side"
+    />
+  </div>
+</template>
+```
+#### 注册为全局组件
 ```ts
 import Vue from 'vue'
 import CodeDiff from 'v-code-diff'
 
 Vue.use(CodeDiff)
 ```
-
-#### 单独引入
-
-不推荐，但保留相关能力，方便 0.x 用户迁移
 
 ## Demo
 
@@ -157,13 +188,39 @@ Vue.use(CodeDiff)
 ```shell
 pnpm add highlight.js
 ```
-
-```typescript
-import CodeDiff from "v-code-diff";
+#### 单独引入
+> 推荐使用，因为对 tree-shaking 有更好的支持。
+```vue
+<script>
+import { CodeDiff, hljs } from 'v-code-diff'
+import c from 'highlight.js/lib/languages/c'
 // Extend C language
-import c from "highlight.js/lib/languages/c";
+hljs.registerLanguage('c', c)
+export default {
+  components: {
+    CodeDiff,
+  }
+}
+</script>
 
-CodeDiff.hljs.registerLanguage("c", c);
+<template>
+  <div>
+    <CodeDiff
+      old-string="#include <stdio.h>"
+      new-string="#include <stdio.h>\nint a = 1;"
+      output-format="side-by-side"
+      language="c"
+    />
+  </div>
+</template>
+```
+#### 全局注册
+```typescript
+import CodeDiff from "v-code-diff"
+// Extend C language
+import c from "highlight.js/lib/languages/c"
+
+CodeDiff.hljs.registerLanguage("c", c)
 ```
 
 ## 从 0.x 版本迁移
