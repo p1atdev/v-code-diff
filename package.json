@@ -1,8 +1,9 @@
 {
   "name": "v-code-diff",
   "type": "module",
-  "version": "1.8.0",
+  "version": "1.10.0",
   "description": "template component for vue-demi, can dev and build",
+  "license": "MIT",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
@@ -14,7 +15,6 @@
   "module": "dist/index.es.js",
   "types": "./types/index.d.ts",
   "files": [
-    "LICENSE",
     "dist",
     "scripts",
     "src",
@@ -37,6 +37,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --ext .vue,.js,.jsx,.ts,.tsx,json --fix --ignore-path .gitignore",
     "postinstall": "node scripts/postinstall.cjs",
+    "prepublishOnly": "npm run build",
     "release": "bumpp --commit --no-push --tag && npm publish"
   },
   "peerDependencies": {

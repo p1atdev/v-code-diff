@@ -22,7 +22,6 @@ This project references the following projects, and I would like to express my g
 - Github Code Diff
 
 ## Contents
-
 - [Install](#Install)
 - [Getting started](#Getting-started)
   - [Vue3](#Vue3)
@@ -58,6 +57,24 @@ pnpm add @vue/composition-api
 
 ### Vue3
 
+#### Register locally
+> Recommend using local registration for better tree-shaking support.
+```vue
+<script setup>
+import { CodeDiff } from 'v-code-diff'
+</script>
+
+<template>
+  <div>
+    <CodeDiff
+      old-string="12345"
+      new-string="3456"
+      output-format="side-by-side"
+    />
+  </div>
+</template>
+```
+
 #### Register globally
 
 ```ts
@@ -81,24 +98,37 @@ then
 </template>
 ```
 
-#### Register locally
-
-Not recommended, but the relevant capabilities are retained to facilitate migration for 0.x users.
-
 ### Vue2
 
-#### Register globally
+#### Register locally
+> > Recommend using local registration for better tree-shaking support.
+```vue
+<script>
+import { CodeDiff } from 'v-code-diff'
+export default {
+  components: {
+    CodeDiff
+  }
+}
+</script>
 
+<template>
+  <div>
+    <CodeDiff
+      old-string="12345"
+      new-string="3456"
+      output-format="side-by-side"
+    />
+  </div>
+</template>
+```
+#### Register globally
 ```ts
 import Vue from 'vue'
 import CodeDiff from 'v-code-diff'
 
 Vue.use(CodeDiff)
 ```
-
-#### Register locally
-
-Not recommended, but the relevant capabilities are retained to facilitate migration for 0.x users.
 
 ## Demo
 
@@ -160,13 +190,40 @@ If the language you need is not included, you can manually import the relevant l
 ```shell
 pnpm add highlight.js
 ```
-
-```typescript
-import CodeDiff from 'v-code-diff';
+#### Register locally
+> Recommend using local registration for better tree-shaking support.
+```vue
+<script>
+import { CodeDiff, hljs } from 'v-code-diff'
+import c from 'highlight.js/lib/languages/c'
 // Extend C language
-import c from 'highlight.js/lib/languages/c';
+hljs.registerLanguage('c', c)
+export default {
+  components: {
+    CodeDiff,
+  }
+}
+</script>
 
-CodeDiff.hljs.registerLanguage('c', c);
+<template>
+  <div>
+    <CodeDiff
+      old-string="#include <stdio.h>"
+      new-string="#include <stdio.h>\nint a = 1;"
+      output-format="side-by-side"
+      language="c"
+    />
+  </div>
+</template>
+```
+
+#### Register globally
+```typescript
+import CodeDiff from 'v-code-diff'
+// Extend C language
+import c from 'highlight.js/lib/languages/c'
+
+CodeDiff.hljs.registerLanguage('c', c)
 ```
 
 ## Migrate from 0.x version
