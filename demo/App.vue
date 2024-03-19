@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { version } from 'vue-demi'
-import { computed, reactive, ref, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { newShortText } from './text/new-short-text'
 import { oldShortText } from './text/old-short-text'
@@ -58,8 +58,6 @@ const { locale, t } = useI18n()
 function toggleLang() {
   locale.value = locale.value === 'en' ? 'cn' : 'en'
 }
-
-const label = computed(() => t('options.theme'))
 </script>
 
 <template>
