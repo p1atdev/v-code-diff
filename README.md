@@ -101,7 +101,7 @@ then
 ### Vue2
 
 #### Register locally
-> > Recommend using local registration for better tree-shaking support.
+> Recommend using local registration for better tree-shaking support.
 ```vue
 <script>
 import { CodeDiff } from 'v-code-diff'
@@ -140,23 +140,24 @@ Vue.use(CodeDiff)
 
 ## Props
 
-| Prop           | Description                                                                                                                                                             | Type      | Optional Values            | Default Value |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------------- | ------------- |
-| language       | Code language, such as typescript, defaults to plain text. [View all supported languages](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md) | string    | -                          | plaintext     |
-| oldString      | Old string                                                                                                                                                              | string    | -                          | -             |
-| newString      | New string                                                                                                                                                              | string    | -                          | -             |
-| context        | The number of lines to separate different parts so that they are not hidden                                                                                             | number    | -                          | 10            |
-| outputFormat   | Display mode                                                                                                                                                            | string    | line-by-line，side-by-side | line-by-line  |
-| diffStyle      | Difference style, word-level differences or letter-level differences                                                                                                    | string    | word, char                 | word          |
-| trim           | Remove blank characters at the beginning and end of the string                                                                                                          | boolean   | -                          | false         |
-| noDiffLineFeed | Don't diff Windows line feed (CRLF) and Linux line feed (LF)                                                                                                            | boolean   | -                          | false         |
-| maxHeight      | Maximum height of component, for example: 300px                                                                                                                         | string    | -                          | undefined     |
-| filename       | Filename                                                                                                                                                                | string    | -                          | undefined     |
-| newFilename    | New filename                                                                                                                                                            | string    | -                          | undefined     |
-| hideHeader | Hide header bar | boolean | - | false |
-| hideStat | Hide statistical part in the header bar | boolean | - | false |
-| theme          | Add dark mode                                                                                                                                                           | ThemeType | light , dark               | light       |
-| ignoreMatchingLines | Give a pattern to ignore matching lines eg: '(time\|token)' | string | - | undefined |
+| Prop                | Description                                                                                                                                                             | Type      | Optional Values           | Default Value |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|---------------------------|---------------|
+| language            | Code language, such as typescript, defaults to plain text. [View all supported languages](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md) | string    | -                         | plaintext     |
+| oldString           | Old string                                                                                                                                                              | string    | -                         | -             |
+| newString           | New string                                                                                                                                                              | string    | -                         | -             |
+| context             | The number of lines to separate different parts so that they are not hidden                                                                                             | number    | -                         | 10            |
+| outputFormat        | Display mode                                                                                                                                                            | string    | line-by-line，side-by-side | line-by-line  |
+| diffStyle           | Difference style, word-level differences or letter-level differences                                                                                                    | string    | word, char                | word          |
+|forceInlineComparison| Force inline comparison (word or char level)                                                                                                                            | boolean   | -                         | false         |
+| trim                | Remove blank characters at the beginning and end of the string                                                                                                          | boolean   | -                         | false         |
+| noDiffLineFeed      | Don't diff Windows line feed (CRLF) and Linux line feed (LF)                                                                                                            | boolean   | -                         | false         |
+| maxHeight           | Maximum height of component, for example: 300px                                                                                                                         | string    | -                         | undefined     |
+| filename            | Filename                                                                                                                                                                | string    | -                         | undefined     |
+| newFilename         | New filename                                                                                                                                                            | string    | -                         | undefined     |
+| hideHeader          | Hide header bar                                                                                                                                                         | boolean   | -                         | false         |
+| hideStat            | Hide statistical part in the header bar                                                                                                                                 | boolean   | -                         | false         |
+| theme               | Add dark mode                                                                                                                                                           | ThemeType | light , dark              | light         |
+| ignoreMatchingLines | Give a pattern to ignore matching lines eg: '(time\|token)'                                                                                                             | string    | -                         | undefined     |
 
 ## Events
 

@@ -170,6 +170,7 @@ export function createSplitDiff(
   newString: string,
   language = 'plaintext',
   diffStyle = 'word',
+  forceInlineComparison = false,
   context = 10,
   ignoreMatchingLines?: string,
 ): SplitViewerChange {
@@ -270,9 +271,9 @@ export function createSplitDiff(
             addNum++
 
           const [curLine, nextLine] = [curLines[j], nextLines[j]]
-
-          const leftLine = curLines.length === nextLines.length ? renderWords(nextLine, curLine, diffStyle) : curLine
-          const rightLine = curLines.length === nextLines.length ? renderWords(curLine, nextLine, diffStyle) : nextLine
+          const shouldRenderWords = forceInlineComparison || curLines.length === nextLines.length
+          const leftLine = shouldRenderWords ? renderWords(nextLine, curLine, diffStyle) : curLine
+          const rightLine = shouldRenderWords ? renderWords(curLine, nextLine, diffStyle) : nextLine
 
           // 忽略匹配的行等价于相等
           const leftDiffType = ignoreRegex?.test(curLine) ? DiffType.EQUAL : DiffType.DELETE
@@ -361,6 +362,7 @@ export function createUnifiedDiff(
   newString: string,
   language = 'plaintext',
   diffStyle = 'word',
+  forceInlineComparison = false,
   context = 10,
   ignoreMatchingLines?: string,
 ): UnifiedViewerChange {
@@ -430,7 +432,7 @@ export function createUnifiedDiff(
     // 处理当前 diff 为删除的情况
     if (curType === DiffType.DELETE) {
       // 下一处差异为新增，且删除与新增行数相同时，对每行依次 diff
-      if (nextType === DiffType.ADD && curLines.length === nextLines.length) {
+      if (nextType === DiffType.ADD && (curLines.length === nextLines.length || forceInlineComparison)) {
         for (let j = 0; j < curLines.length; j++) {
           const curLine = curLines[j]
           const nextLine = nextLines[j]

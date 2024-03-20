@@ -46,6 +46,7 @@ const i18n = createI18n({
         noDiffLineFeed: '不显示差异换行符',
         hideHeader: '隐藏首部',
         hideStatistics: '隐藏统计信息',
+        forceInlineComparison: '强制行内对比',
       },
     },
     en: {
@@ -72,6 +73,7 @@ const i18n = createI18n({
         noDiffLineFeed: 'No Diff Line Feed',
         hideHeader: 'Hide Header',
         hideStatistics: 'Hide Statistics',
+        forceInlineComparison: 'Force Inline Comparison',
       },
     },
   },
