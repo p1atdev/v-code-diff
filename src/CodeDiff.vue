@@ -12,6 +12,7 @@ interface Props {
   language?: string
   context?: number
   diffStyle?: 'word' | 'char'
+  forceInlineComparison?: boolean
   outputFormat?: 'line-by-line' | 'side-by-side'
   trim?: boolean
   noDiffLineFeed?: boolean
@@ -29,6 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   language: 'plaintext',
   context: 10,
   diffStyle: 'word',
+  forceInlineComparison: false,
   outputFormat: 'line-by-line',
   trim: false,
   noDiffLineFeed: false,
@@ -70,8 +72,8 @@ const newString = computed(() => {
 
 const raw = computed(() =>
   isUnifiedViewer.value
-    ? createUnifiedDiff(oldString.value, newString.value, props.language, props.diffStyle, props.context, props.ignoreMatchingLines)
-    : createSplitDiff(oldString.value, newString.value, props.language, props.diffStyle, props.context, props.ignoreMatchingLines),
+    ? createUnifiedDiff(oldString.value, newString.value, props.language, props.diffStyle, props.forceInlineComparison, props.context, props.ignoreMatchingLines)
+    : createSplitDiff(oldString.value, newString.value, props.language, props.diffStyle, props.forceInlineComparison, props.context, props.ignoreMatchingLines),
 )
 const diffChange = ref(raw.value)
 const isNotChanged = computed(() => diffChange.value.stat.additionsNum === 0 && diffChange.value.stat.deletionsNum === 0)

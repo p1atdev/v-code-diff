@@ -139,23 +139,24 @@ Vue.use(CodeDiff)
 
 ## 组件属性
 
-| 参数           | 说明                                                                                                                                    | 类型      | 可选值                     | 默认值       |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------------- | ------------ |
-| language       | 代码语言，如`typescript`，默认纯文本。 [查看全部支持语言](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md) | string    | -                          | plaintext    |
-| oldString      | 旧的字符串                                                                                                                              | string    | -                          | -            |
-| newString      | 新的字符串                                                                                                                              | string    | -                          | -            |
-| context        | 不同地方上下间隔多少行不隐藏                                                                                                            | number    | -                          | 10           |
-| outputFormat   | 展示方式                                                                                                                                | string    | line-by-line，side-by-side | line-by-line |
-| diffStyle      | 差异风格, 单词级差异或字母级差异                                                                                                        | string    | word, char                 | word         |
-| trim           | 移除字符串前后空白字符                                                                                                                  | boolean   | -                          | false        |
-| noDiffLineFeed | 不 diff windows 换行符(CRLF)与 linux 换行符(LF)                                                                                         | boolean   | -                          | false        |
-| maxHeight      | 组件最大高度，例如 300px                                                                                                                | string    | -                          | undefined    |
-| filename       | 文件名                                                                                                                                  | string    | -                          | undefined    |
-| newFilename    | 新文件文件名                                                                                                                   | string    | -                          | undefined    |
-| hideHeader | 隐藏头部栏 | boolean | - | false |
-| hideStat | 隐藏头部栏中的统计信息 | boolean | - | false |
-| theme          | 用于切换日间模式/夜间模式                                                                                                               | ThemeType | light , dark               | light      |
-| ignoreMatchingLines | 给出一个模式来忽略匹配行，例如：'(time\|token)' | string | - |  |
+| 参数                  | 说明                                                                                                                 | 类型        | 可选值                       | 默认值          |
+|---------------------|--------------------------------------------------------------------------------------------------------------------|-----------|---------------------------|--------------|
+| language            | 代码语言，如`typescript`，默认纯文本。 [查看全部支持语言](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md) | string    | -                         | plaintext    |
+| oldString           | 旧的字符串                                                                                                              | string    | -                         | -            |
+| newString           | 新的字符串                                                                                                              | string    | -                         | -            |
+| context             | 不同地方上下间隔多少行不隐藏                                                                                                     | number    | -                         | 10           |
+| outputFormat        | 展示方式                                                                                                               | string    | line-by-line，side-by-side | line-by-line |
+| diffStyle           | 差异风格, 单词级差异或字母级差异                                                                                                  | string    | word, char                | word         |
+|forceInlineComparison| 细分差异；存在差异时，强制进行行内对比（word 或 char 级）                                                                                | boolean   | -                         | false        |
+| trim                | 移除字符串前后空白字符                                                                                                        | boolean   | -                         | false        |
+| noDiffLineFeed      | 不 diff windows 换行符(CRLF)与 linux 换行符(LF)                                                                            | boolean   | -                         | false        |
+| maxHeight           | 组件最大高度，例如 300px                                                                                                    | string    | -                         | undefined    |
+| filename            | 文件名                                                                                                                | string    | -                         | undefined    |
+| newFilename         | 新文件文件名                                                                                                             | string    | -                         | undefined    |
+| hideHeader          | 隐藏头部栏                                                                                                              | boolean   | -                         | false        |
+| hideStat            | 隐藏头部栏中的统计信息                                                                                                        | boolean   | -                         | false        |
+| theme               | 用于切换日间模式/夜间模式                                                                                                      | ThemeType | light , dark              | light        |
+| ignoreMatchingLines | 给出一个模式来忽略匹配行，例如：'(time\|token)'                                                                                    | string    | -                         |              |
 
 ## 组件事件
 
