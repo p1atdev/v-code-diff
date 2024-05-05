@@ -3,6 +3,8 @@ import { computed, ref, watch } from 'vue-demi'
 import { createSplitDiff, createUnifiedDiff } from './utils'
 import UnifiedViewer from './unified/UnifiedViewer.vue'
 import SplitViewer from './split/SplitViewer.vue'
+import DownArrowIcon from './icons/DownArrowIcon.vue'
+import UpArrowIcon from './icons/UpArrowIcon.vue'
 
 import './style.scss'
 
@@ -78,6 +80,35 @@ const raw = computed(() =>
 const diffChange = ref(raw.value)
 const isNotChanged = computed(() => diffChange.value.stat.additionsNum === 0 && diffChange.value.stat.deletionsNum === 0)
 
+const currentDiffIndex = ref(-1)
+
+function goToNextDiff() {
+  const diffs = document.querySelectorAll('.blob-code-addition')
+  if (currentDiffIndex.value < diffs.length - 1) {
+    currentDiffIndex.value++
+    updateCurrentDiffHighlight(diffs)
+  }
+}
+
+function goToPrevDiff() {
+  const diffs = document.querySelectorAll('.blob-code-addition')
+  if (currentDiffIndex.value > 0) {
+    currentDiffIndex.value--
+    updateCurrentDiffHighlight(diffs)
+  }
+}
+
+function updateCurrentDiffHighlight(diffs: NodeListOf<Element>) {
+  diffs.forEach((diff: { classList: { remove: (arg0: string) => any } }) => diff.classList.remove('current-diff'))
+
+  const currentDiff = diffs[currentDiffIndex.value]
+
+  if (currentDiff) {
+    currentDiff.classList.add('current-diff')
+    currentDiff.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+}
+
 watch(() => props, () => {
   diffChange.value = raw.value
   emits('diff', {
@@ -99,6 +130,14 @@ watch(() => props, () => {
           <div class="info-left">{{ filename }}</div>
           <div class="info-left">{{ newFilename }}</div>
         </span>
+        <span class="diff-commandbar">
+          <button class="command-item-button" title="Next Change" @click="goToNextDiff">
+            <DownArrowIcon />
+          </button>
+          <button class="command-item-button" title="Previous Change" @click="goToPrevDiff">
+            <UpArrowIcon />
+          </button>
+        </span>
         <span v-if="!hideStat" class="diff-stat">
           <slot name="stat" :stat="diffChange.stat">
             <span class="diff-stat-added">+{{ diffChange.stat.additionsNum }} additions</span>
@@ -111,6 +150,14 @@ watch(() => props, () => {
         <span class="info-left">{{ filename }}</span>
         <span class="info-right">
           <span style="margin-left: 20px;">{{ newFilename }}</span>
+          <span class="diff-commandbar">
+            <button class="command-item-button" title="Next Change" @click="goToNextDiff">
+              <DownArrowIcon />
+            </button>
+            <button class="command-item-button" title="Previous Change" @click="goToPrevDiff">
+              <UpArrowIcon />
+            </button>
+          </span>
           <span v-if="!hideStat" class="diff-stat">
             <slot name="stat" :stat="diffChange.stat">
               <span class="diff-stat-added">+{{ diffChange.stat.additionsNum }} additions</span>

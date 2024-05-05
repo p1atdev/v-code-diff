@@ -53,6 +53,25 @@
           color: var(--color-fg-subtle);
         }
       }
+
+      .diff-commandbar {
+        margin-left: auto;
+        margin-right: 1rem;
+        
+        .command-item-button {
+          background-color: transparent;
+          color: var(--color-fg-subtle);
+          border: none;
+
+          svg {
+            fill: var(--color-fg-subtle);          
+          }
+        }
+
+        .command-item-button:hover {
+          background-color: var(--color-btn-outline-hover-border);
+        }
+      }
     }
   }
 
@@ -123,6 +142,10 @@
         color: var(--color-diff-blob-addition-fg);
         background-color: var(--color-diff-blob-addition-word-bg);
       }
+    }
+    
+    .current-diff {
+      border: 1px solid var(--color-border-muted);
     }
 
     .blob-code-context,
