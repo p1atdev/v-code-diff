@@ -1,7 +1,7 @@
 {
   "name": "v-code-diff",
   "type": "module",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "template component for vue-demi, can dev and build",
   "license": "MIT",
   "exports": {
