@@ -47,6 +47,7 @@ const i18n = createI18n({
         hideHeader: '隐藏首部',
         hideStatistics: '隐藏统计信息',
         forceInlineComparison: '强制行内对比',
+        maxHeight: '固定高度(带上单位）',
       },
     },
     en: {
@@ -74,6 +75,7 @@ const i18n = createI18n({
         hideHeader: 'Hide Header',
         hideStatistics: 'Hide Statistics',
         forceInlineComparison: 'Force Inline Comparison',
+        maxHeight: 'Height(with unit)',
       },
     },
   },
