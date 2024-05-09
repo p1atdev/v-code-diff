@@ -20,6 +20,7 @@ const formState = reactive({
   newFilename: 'newPackage.json',
   hideHeader: false,
   hideStat: false,
+  maxHeight: '',
 })
 
 const oldString = ref(oldShortText.value)
@@ -185,6 +186,12 @@ function toggleLang() {
               <a-switch v-model:checked="formState.forceInlineComparison" />
             </a-form-item>
           </a-col>
+          <a-col :md="8" :sm="24">
+            <a-form-item>
+              <slot><span class="form-item-label">{{ t('options.maxHeight') }}</span> </slot>
+              <a-input v-model:value="formState.maxHeight" placeholder="500px" style="width: 12vw;" />
+            </a-form-item>
+          </a-col>
         </a-row>
       </a-form>
     </a-card>
@@ -194,7 +201,7 @@ function toggleLang() {
         :diff-style="formState.diffStyle" :force-inline-comparison="formState.forceInlineComparison" :output-format="formState.outputFormat" :context="formState.context"
         :trim="formState.trim" :no-diff-line-feed="formState.noDiffLineFeed" :filename="formState.filename"
         :new-filename="formState.newFilename" :hide-header="formState.hideHeader" :hide-stat="formState.hideStat"
-        @diff="printEvent"
+        :max-height="formState.maxHeight" @diff="printEvent"
       />
     </div>
   </div>
