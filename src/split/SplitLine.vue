@@ -17,8 +17,6 @@ function getCodeMarker(type: DiffType) {
 }
 
 function onSplitLineMousedown(side: 'left' | 'right') {
-  window.getSelection()!.removeAllRanges()
-
   const leftElements = document.querySelectorAll('.file-diff-split .split-side-left')!
   const rightElements = document.querySelectorAll('.file-diff-split .split-side-right')!
 
